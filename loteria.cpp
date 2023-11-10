@@ -6,7 +6,7 @@ typedef int tipoClave;
 typedef int tipoInfo;
 
 int main() {
-    // Crear la instancia del nuevo TDA
+    // Crear el TDA de hashing
     UnsortedDict<tipoClave, tipoInfo> hashTable;
 
     // Lectura de información de premios desde el archivo
@@ -15,7 +15,7 @@ int main() {
     int n;
     archivo >> n;
 
-    for (int i = 0; i < n; ++i) {
+    for (int i = 0; i < n; i++) {
         tipoClave num;
         tipoInfo premio;
         archivo >> num >> premio;
