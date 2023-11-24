@@ -2,7 +2,6 @@
 #include <fstream>
 #include "UsortedDict.cpp"
 
-typedef int tipoClave;
 typedef int tipoInfo;
 
 int main() {

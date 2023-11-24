@@ -1,6 +1,16 @@
 {
     "files.associations": {
         "typeinfo": "cpp",
-        "fstream": "cpp"
+        "fstream": "cpp",
+        "exception": "cpp",
+        "format": "cpp",
+        "iterator": "cpp",
+        "ostream": "cpp",
+        "stdexcept": "cpp",
+        "streambuf": "cpp",
+        "xlocale": "cpp",
+        "xlocmon": "cpp",
+        "xstring": "cpp",
+        "xutility": "cpp"
     }
 }
