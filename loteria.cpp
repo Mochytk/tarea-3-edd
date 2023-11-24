@@ -1,45 +1,44 @@
 #include <iostream>
 #include <fstream>
-#include "UsortedDict.cpp"
-
-typedef int tipoInfo;
+#include <sstream>
+#include "UnsortedDict.cpp"
 
 int main() {
-    // Crear el TDA de hashing
-    hashTable tablaHash;
-
-    // Lectura de información de premios desde el archivo
-    std::ifstream archivo("premios.txt");
-
-    int n;
-    archivo >> n;
-
-    for (int i = 0; i < n; i++) {
-        tipoClave num;
-        tipoInfo premio;
-        archivo >> num >> premio;
-        hashTable.insert(num, premio, tipoInfo);
+    // Leer información de premios desde el archivo
+    std::ifstream premiosFile("premios.txt");
+    if (!premiosFile.is_open()) {
+        std::cerr << "Error al abrir el archivo de premios" << std::endl;
+        return 1;
     }
 
-    archivo.close();
+    int numPremios;
+    premiosFile >> numPremios;
 
-    // Entrada de números comprados por las personas
-    int k;
-    std::cin >> k;
+    UnsortedDict premiosDict;
 
-    for (int i = 0; i < k; i++) {
-        tipoClave numComprado;
-        std::cin >> numComprado;
+    // Insertar premios en la tabla hash
+    for (int i = 0; i < numPremios; ++i) {
+        int numero;
+        std::string premio;
+        premiosFile >> numero >> premio;
+        premiosDict.hashInsert(premiosDict.table, numero, premio);
+    }
+
+    premiosFile.close();
+
+    // Leer números comprados por las personas
+    int numPersonas;
+    std::cin >> numPersonas;
+
+    for (int i = 0; i < numPersonas; ++i) {
+        int numeroComprado;
+        std::cin >> numeroComprado;
 
         // Buscar el premio asociado al número comprado
-        tipoInfo *premio = hashTable.get(numComprado);
+        std::string premio = premiosDict.hashSearch(premiosDict.table, numeroComprado);
 
-        // Mostrar el premio o indicar que no tiene premio
-        if (premio != hashTable.end()) {
-            std::cout << *premio << std::endl;
-        } else {
-            std::cout << "No tiene premio" << std::endl;
-        }
+        // Mostrar el premio o "No tiene premio"
+        std::cout << (premio != "invalido" ? premio : "No tiene premio") << std::endl;
     }
 
     return 0;
