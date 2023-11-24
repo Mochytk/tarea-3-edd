@@ -6,7 +6,7 @@ typedef int tipoInfo;
 
 int main() {
     // Crear el TDA de hashing
-    UnsortedDict<tipoClave, tipoInfo> hashTable;
+    hashTable tablaHash;
 
     // Lectura de información de premios desde el archivo
     std::ifstream archivo("premios.txt");
@@ -18,7 +18,7 @@ int main() {
         tipoClave num;
         tipoInfo premio;
         archivo >> num >> premio;
-        hashTable.insert(num, premio);
+        hashTable.insert(num, premio, tipoInfo);
     }
 
     archivo.close();
