@@ -19,8 +19,6 @@ public:
     std::string hashDelete(Ranura HT[], int k);
     std::string hashSearch(Ranura HT[], int k);
     int h(int k);
-
-private:
     Ranura table[TABLE_SIZE]; // Tabla hash
 };
 
